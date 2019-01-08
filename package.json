@@ -1,7 +1,7 @@
 {
-  "name": "ua-device",
-  "version": "0.1.10",
-  "description": "ua-device是由Baidu WebFE(FEX)团队开发的一个用于解析UA来得到用户终端信息的JS框架",
+  "name": "@ali/vmate-ua-device",
+  "version": "0.2.2",
+  "description": "ua-device是由Baidu WebFE(FEX)团队开发的一个用于解析UA来得到用户终端信息的JS框架，针对部分的印度手机系统进行了修改",
   "main": "index.js",
   "directories": {
     "test": "test"
@@ -11,7 +11,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fex-team/ua-device.git"
+    "url": "git+https://github.com/jeffincn/ua-device.git"
+  },
+  "publishConfig": {
+    "registry": "http://registry.npm.alibaba-inc.com"
   },
   "keywords": [
     "user-agent",
@@ -22,14 +25,10 @@
   "devDependencies": {
     "mocha": ">2.3.4"
   },
-  "author": "Hongbin Du <duhongbin01@baidu.com>",
-  "contributors": [
-    "Hongbin Du <duhongbin01@baidu.com>",
-    "Jun Zhang <zhangjun08@baidu.com>"
-  ],
+  "author": "Guo Jianfeng <gjf89268@alibaba-inc.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/fex-team/ua-device/issues"
+    "url": "https://github.com/jeffincn/ua-device/issues"
   },
-  "homepage": "https://github.com/fex-team/ua-device"
+  "homepage": "https://github.com/jeffincn/ua-device"
 }

@@ -38,17 +38,18 @@ function testData () {
 		}
 
 		/***************** handle device *****************/
-		var device_type = tmp_result['device']['type'] || '';
-		var device_model = tmp_result['device']['model'] || '-';
-		var device_manufacturer = tmp_result['device']['manufacturer'] || '-';
-		if(tmp_result['device']['type'] == 'desktop' || tmp_result['device']['type'] == 'emulator' || tmp_result['device']['type'] == 'television') {
+		var device_type =  tmp_result['device']['type'] ;
+		var device_model = tmp_result['device']['model'] ;
+		var device_manufacturer = tmp_result['device']['manufacturer'];
+
+		if(device_type == 'desktop' || device_type == 'emulator' || device_type == 'television') {
 			recognize_num['device_manufacturer'] += 1;
 			recognize_num['device_model'] += 1;
-		} else if(tmp_result['device']['type'] == "mobile" || tmp_result['device']['type'] == 'tablet' || tmp_result['device']['type'] == 'media') {
-			if(tmp_result['device']['model']) {
+		} else if(device_type == "mobile" || device_type == 'tablet' || device_type == 'media') {
+			if(device_model !== 'Unknown') {
 				recognize_num['device_model'] += 1;
 			}
-			if(tmp_result['device']['manufacturer']){
+			if(device_manufacturer !== 'Unknown'){
 				recognize_num['device_manufacturer'] += 1;
 			}
 		}
