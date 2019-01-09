@@ -1,6 +1,6 @@
 {
   "name": "@ali/vmate-ua-device",
-  "version": "0.2.2",
+  "version": "0.2.7",
   "description": "ua-device是由Baidu WebFE(FEX)团队开发的一个用于解析UA来得到用户终端信息的JS框架，针对部分的印度手机系统进行了修改",
   "main": "index.js",
   "directories": {

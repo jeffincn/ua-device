@@ -17,7 +17,7 @@ var recognize_num = {
 }
 
 function testData () {
-	var data_input_path = path.resolve(__dirname, './test_input');
+	var data_input_path = path.resolve(__dirname, './RMX1811');
 	var data_input = String(fs.readFileSync(data_input_path)).split("\n");
 	for(var i = 0; i < data_input.length; ++i) {
 		if(data_input.length == 0) {
@@ -29,27 +29,33 @@ function testData () {
 		/********* handle browser engine os *********/
 		var tmp_arr = ['browser', 'engine', 'os'];
 		for(var j = 0; j < tmp_arr.length; ++j) {
-			if(tmp_result[tmp_arr[j]]['name']) {
+			if(tmp_result[tmp_arr[j]]['name'] && tmp_result[tmp_arr[j]]['name'].toLowerCase() !== 'unknown') {
 				recognize_num[tmp_arr[j]+'_name'] += 1;
 			}
-			if(tmp_result[tmp_arr[j]]['version'] && tmp_result[tmp_arr[j]]['version']['original']){
+			if(tmp_result[tmp_arr[j]]['version'] && tmp_result[tmp_arr[j]]['version']['original']  && tmp_result[tmp_arr[j]]['version']['original'].toLowerCase() !== 'unknown'){
 				recognize_num[tmp_arr[j]+'_version'] += 1;
 			}
 		}
 
 		/***************** handle device *****************/
 		var device_type =  tmp_result['device']['type'] ;
-		var device_model = tmp_result['device']['model'] ;
-		var device_manufacturer = tmp_result['device']['manufacturer'];
+		var device_model = tmp_result['device']['model'] || 'unknown' ;
+		var device_manufacturer = tmp_result['device']['manufacturer'] || 'unknown';
 
 		if(device_type == 'desktop' || device_type == 'emulator' || device_type == 'television') {
 			recognize_num['device_manufacturer'] += 1;
 			recognize_num['device_model'] += 1;
 		} else if(device_type == "mobile" || device_type == 'tablet' || device_type == 'media') {
-			if(device_model !== 'Unknown') {
+			
+			if((device_model.toLowerCase().indexOf('undefined')===-1) && (device_model.toLowerCase() !== 'unknown')) {
 				recognize_num['device_model'] += 1;
+				
+			} else {
+				console.log(data_input[i] , '====>', device_model);
 			}
-			if(device_manufacturer !== 'Unknown'){
+			if(device_manufacturer.toLowerCase()  !== 'unknown'){
+
+				// console.log(device_model);
 				recognize_num['device_manufacturer'] += 1;
 			}
 		}
